@@ -1,7 +1,8 @@
 Demixed Subspace Principal Component Analysis (dsPCA)
 ===========================================
 
-dsPCA decomposes high-dimensional data into low-dimensional orthogonal subspaces where pre-specified signals of interest are demixed into distinct subspaces. For example, when you want to separate signals related to variables A, B, and C in the original data, tsPCA decomposes the data into demixed subspaces A, B, C, and a subspace that is free of the signals related to A, B, and C. When tsPCA is applied to a neural population activity, tsPCA decomposes neural population activity into orthogonal subspaces where targeted task-related signals are demixed. tsPCA can identify subspaces for any types of variables, including continuous, discrete, and categorical variables.
+dsPCA is a dimensionality reduction algorithm for high-dimensional data such as neural population activity. dsPCA describes high-dimensional data by finding best demixed linear coding axes for targeted variables and finding linear dimensions that concicely describe the remaining variance in the data. The demixed coding axes for targeted variables are identified with a supervised approach, and then the axes that capture the remaining variance in the data are identified with an unsupervised approach. Importantly, dsPCA completely removes the linear coding of target signals from data before the unsupervised axis identifications. Therefore, dsPCA decomposes a high-dimensional data into a subspace that fully captures all target signals in the data and a subspace that is free of all target signals.
+
 
 ## Installation
 will make it available from PyPl
