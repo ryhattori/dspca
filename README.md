@@ -9,7 +9,7 @@ will make it available from PyPl
 
 ## How to use
 dsPCA code is written for Python 3.x    
-Please check an example demo in *dsPCA_demo.ipynb* for the basic implementation.
+Please check an example demo in **dsPCA_demo.ipynb** for the basic implementation.
 
 After installation, import dsPCA
 ~~~~
