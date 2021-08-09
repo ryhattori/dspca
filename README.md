@@ -32,10 +32,10 @@ total_var
 dot_target_ax
 ~~~~
 projection_target_subspace
-- Projections of data onto demixed target signal axes.
+- Projection of data onto demixed target signal axes.
 
 projection_targetfree_subspace
-- Projections of population activity to the axes of target-free subspace.
+- Projection of population activity to the axes of target-free subspace.
 
 ax_targets
 - Axis vectors for the target signal subspace.
