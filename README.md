@@ -32,10 +32,10 @@ total_var
 dot_target_ax
 ~~~~
 projection_target_subspace
-- Projections of population activity to demixed target signal axes ([Trials] x [target dimensions]). The dimension type is in the order of dQ, Qch, sQ.
+- Projections of data onto demixed target signal axes.
 
 projection_targetfree_subspace
-- Projections of population activity to the axes of target-free subspace ([Trials] x [target-free dimensions]). The dimensions are ordered according to the amount of explained activity variance.
+- Projections of population activity to the axes of target-free subspace.
 
 ax_targets
 - Axis vectors for the target signal subspace.
@@ -44,19 +44,19 @@ ax_targetfree
 - Axis vectors for the target-free signal subspace.
 
 target_subspace_signal
-- Pearson correlation coefficient between the activity along each target axis and the targeted task-related variables. The 1st dimension indicates target axis type, the 2nd dimension indicates target variables, the 3rd dimension specifies the correlation coefficient (0) or the p-value (1).
+- Pearson correlation coefficient between the projected data along each target axis and the targeted task-related variables.
 
 targetfree_subspace_signal
-- Pearson correlation coefficient between the activity along each target-free axis and the targeted task-related variables. The 1st dimension indicates target-free axes, the 2nd dimension indicates target variables, the 3rd dimension specifies the correlation coefficient (0) or the p-value (1).
+- Pearson correlation coefficient between the projected data along each target-free axis and the targeted task-related variables.
 
 target_subspace_var
-- Activity variance along each taraget axis
+- Data variance along each taraget axis.
 
 targetfree_subspace_var
-- Activity variance along each taraget-free axis
+- Data variance along each taraget-free axis.
 
 total_var
-- Total activity variance of the original input data (activity_mean)
+- Total data variance of the original input data.
 
 dot_target_ax
 - Matrix with dot products between pairs of target axis vectors.
