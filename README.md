@@ -5,7 +5,7 @@ dsPCA is a dimensionality reduction algorithm for high-dimensional data such as 
 
 
 ## Installation
-will make it available from PyPl
+I will eventually make it available from PyPl. For now, please download all files from this github repository and manually add them to your python path.
 
 ## How to use
 dsPCA code is written for Python 3.x    
