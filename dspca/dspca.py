@@ -39,17 +39,6 @@ def dsPCA(data, targets):
     qr_q, qr_r = np.linalg.qr(ax_targets, mode='complete')
     projection_targetfree_subspace_prepca = np.matmul(data, qr_q[:, n_target:])
 
-    # ax_targets_temp = ax_targets.copy()
-    # data_for_projection = data.copy()
-    # ax_targetfree = np.identity(n_dim_realign)
-    # for target_id in range(n_target):
-    #     qr_q, qr_r = np.linalg.qr(ax_targets_temp[:, target_id, None], mode='complete')
-    #     projected_ax = np.matmul(ax_targets_temp.T, qr_q)
-    #     projected = np.matmul(data_for_projection, qr_q)
-    #     ax_targetfree = np.matmul(ax_targetfree, qr_q[:, 1:])
-    #     data_for_projection = projected[:, 1:]
-    #     ax_targets_temp = projected_ax[:, 1:].T
-
     # Re-arrange target-free axes with PCA, get target-free axes
     if n_dim_trial < (n_dim_realign - n_target):
         print('Trial number '+str(n_dim_trial)+' is smaller than (Dimension - # of targets) of '+str(n_dim_realign - n_target))
