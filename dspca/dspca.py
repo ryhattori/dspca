@@ -33,24 +33,24 @@ def dsPCA(data, targets):
             dot_target_ax[target1_id, target2_id] = np.dot(ax_targets[:, target1_id], ax_targets[:, target2_id])
 
     # Projection of data onto each target axis
-    projection_target_subspace = np.zeros((n_dim_trial, n_target))
-    for target_id in range(n_target):
-        projection_target_subspace[:, target_id] = np.matmul(data, ax_targets[:, target_id])
+    projection_target_subspace = np.matmul(data, ax_targets)
 
     # Projection of data onto target-free subspace
-    ax_targets_temp = ax_targets.copy()
-    data_for_projection = data.copy()
-    ax_targetfree = np.identity(n_dim_realign)
-    for target_id in range(n_target):
-        qr_q, qr_r = np.linalg.qr(ax_targets_temp[:, target_id, None], mode='complete')
-        projected_ax = np.matmul(ax_targets_temp.T, qr_q)
-        projected = np.matmul(data_for_projection, qr_q)
-        ax_targetfree = np.matmul(ax_targetfree, qr_q[:, 1:])
-        data_for_projection = projected[:, 1:]
-        ax_targets_temp = projected_ax[:, 1:].T
+    qr_q, qr_r = np.linalg.qr(ax_targets, mode='complete')
+    projection_targetfree_subspace_prepca = np.matmul(data, qr_q[:, n_target:])
+
+    # ax_targets_temp = ax_targets.copy()
+    # data_for_projection = data.copy()
+    # ax_targetfree = np.identity(n_dim_realign)
+    # for target_id in range(n_target):
+    #     qr_q, qr_r = np.linalg.qr(ax_targets_temp[:, target_id, None], mode='complete')
+    #     projected_ax = np.matmul(ax_targets_temp.T, qr_q)
+    #     projected = np.matmul(data_for_projection, qr_q)
+    #     ax_targetfree = np.matmul(ax_targetfree, qr_q[:, 1:])
+    #     data_for_projection = projected[:, 1:]
+    #     ax_targets_temp = projected_ax[:, 1:].T
 
     # Re-arrange target-free axes with PCA, get target-free axes
-    projection_targetfree_subspace_prepca = data_for_projection
     if n_dim_trial < (n_dim_realign - n_target):
         print('Trial number '+str(n_dim_trial)+' is smaller than (Dimension - # of targets) of '+str(n_dim_realign - n_target))
         print('# of dimensions for target-free subspace is set to the trial number '+str(n_dim_trial))
@@ -59,7 +59,7 @@ def dsPCA(data, targets):
         pca_targetfree = PCA(n_components=(n_dim_realign - n_target))
     pca_targetfree.fit(projection_targetfree_subspace_prepca)
     projection_targetfree_subspace = np.matmul(projection_targetfree_subspace_prepca, pca_targetfree.components_.T)
-    ax_targetfree = np.matmul(ax_targetfree, pca_targetfree.components_.T)
+    ax_targetfree = np.matmul(qr_q[:, n_target:], pca_targetfree.components_.T)
 
     # Variance along each axis
     target_subspace_var = np.var(projection_target_subspace, axis=0)

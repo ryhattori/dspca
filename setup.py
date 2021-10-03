@@ -1,9 +1,10 @@
 from distutils.core import setup
+import setuptools
 
 setup(
     name='dspca',
     version='1.0',
-    packages=['dspca'],
+    packages=setuptools.find_packages(),
     url='http://github.com/ryhattori/dspca',
     license='MIT License',
     author='Ryoma Hattori',
