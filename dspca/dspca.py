@@ -39,7 +39,7 @@ def dsPCA(data, targets):
     qr_q, qr_r = np.linalg.qr(ax_targets, mode='complete')
     projection_targetfree_subspace_prepca = np.matmul(data, qr_q[:, n_target:])
 
-    # Re-arrange target-free axes with PCA, get target-free axes
+    # Re-align target-free axes based on PCs of the activity in the orthogonal subspace, get final target-free axes
     if n_dim_trial < (n_dim_realign - n_target):
         print('Trial number '+str(n_dim_trial)+' is smaller than (Dimension - # of targets) of '+str(n_dim_realign - n_target))
         print('# of dimensions for target-free subspace is set to the trial number '+str(n_dim_trial))
@@ -49,6 +49,10 @@ def dsPCA(data, targets):
     pca_targetfree.fit(projection_targetfree_subspace_prepca)
     projection_targetfree_subspace = np.matmul(projection_targetfree_subspace_prepca, pca_targetfree.components_.T)
     ax_targetfree = np.matmul(qr_q[:, n_target:], pca_targetfree.components_.T)
+
+    # Make sure that target-free axes are unit vectors
+    for ax_id in range(ax_targetfree.shape[1]):
+        ax_targetfree[:, ax_id] = ax_targetfree[:, ax_id] / np.linalg.norm(ax_targetfree[:, ax_id], ord=None)
 
     # Variance along each axis
     target_subspace_var = np.var(projection_target_subspace, axis=0)
