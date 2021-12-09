@@ -5,7 +5,10 @@ dsPCA is a dimensionality reduction algorithm for high-dimensional data such as 
 
 
 ## Installation
-I will eventually make it available from PyPl. For now, please download all files from this github repository and locally pip install.
+Run the following command to install the package.
+~~~~
+pip install dspca
+~~~~
 
 ## How to use
 dsPCA code is written for Python 3.x    
@@ -13,7 +16,7 @@ Please check an example demo in **dsPCA_demo.ipynb** for the basic implementatio
 
 After installation, import dsPCA
 ~~~~
-from dspca import dsPCA
+from dspca.dspca import dsPCA
 ~~~~
 Provide data ([# of observations] X [# of dimensions to be reduced]) and targets ([# of observations] X [# of targets]) 
 ~~~~
