@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='dspca',
-    version='1.0.2',
+    version='1.0.3',
     packages=setuptools.find_packages(),
     url='http://github.com/ryhattori/dspca',
     license='MIT License',
