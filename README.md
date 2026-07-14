@@ -12,7 +12,9 @@ pip install dspca
 
 ## How to use
 dsPCA code is written for Python 3.x    
-Please check an example demo in **dsPCA_demo.ipynb** for the basic implementation.
+Please check the example demos in the **demo/** folder:
+- **demo/dsPCA_demo.ipynb** — basic implementation on value-coding population activity (Hattori and Komiyama, 2022).
+- **demo/dsPCA_demo_Vision_Subspace.ipynb** — application to visual cortex: dsPCA on V1 responses to drifting gratings (orientation × spatial frequency), reproducing the stimulus-coding and stimulus-null subspaces and the orientation-plane geometry.
 
 After installation, import dsPCA
 ~~~~
